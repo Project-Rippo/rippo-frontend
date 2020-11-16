@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   body{
-    font-style: "Roboto", "sans-serif";
+    font-family: "Roboto", sans-serif;
     font-size: 1em;
   }
 `;

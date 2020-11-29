@@ -27,13 +27,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const App = () => {
-  const [parentInformation, setParentInformation] = useState(
-    JSON.parse(localStorage.getItem("parentInformation"))
-  );
-  const [childInformation, setchildInformation] = useState(
-    JSON.parse(localStorage.getItem("childInformation"))
-  );
   const [loader, setLoader] = useState(false);
+  const [basicInformation, setbasicInformation] = useState(false);
 
   const classes = useStyles();
 
@@ -47,7 +42,7 @@ const App = () => {
       });
       const parentRequest = await request.data.getParent;
 
-      await setParentInformation(parentRequest);
+      localStorage.setItem("parentInformation", JSON.stringify(parentRequest));
     } catch (error) {
       console.log("Error fetching parent Information: ", error);
     }
@@ -55,21 +50,16 @@ const App = () => {
     try {
       const request = await API.graphql({
         query: queries.getChild,
-        variables: { id: parentInformation.childsId[0] },
+        variables: { id: "ee0260e0-d65d-43d1-9c79-b65b9f862487" },
       });
       const childRequest = await request.data.getChild;
 
-      await setchildInformation(childRequest);
+      localStorage.setItem("childInformation", JSON.stringify(childRequest));
     } catch (error) {
       console.log("Error fetching child Information: ", error);
     }
 
-    localStorage.setItem(
-      "parentInformation",
-      JSON.stringify(parentInformation)
-    );
-    localStorage.setItem("childInformation", JSON.stringify(childInformation));
-
+    setbasicInformation(true);
     handleLoader(false);
   };
 
@@ -83,21 +73,23 @@ const App = () => {
 
   return (
     <>
-      <Router>
-        <GlobalStyle />
-        <Header />
-        <Box m={2}>
-          <Routes />
-        </Box>
+      <Backdrop className={classes.backdrop} open={loader}>
+        <img
+          src={animatedLogo}
+          className={classes.logo}
+          alt="Gif projeto rippo"
+        ></img>
+      </Backdrop>
 
-        <Backdrop className={classes.backdrop} open={loader}>
-          <img
-            src={animatedLogo}
-            className={classes.logo}
-            alt="Gif projeto rippo"
-          ></img>
-        </Backdrop>
-      </Router>
+      {basicInformation ? (
+        <Router>
+          <GlobalStyle />
+          <Header />
+          <Box m={2}>
+            <Routes />
+          </Box>
+        </Router>
+      ) : null}
     </>
   );
 };

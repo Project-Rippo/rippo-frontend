@@ -14,13 +14,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     fontWeight: "bold",
   },
-  drawer: {
-    minWidth: "220px",
-  },
-  link: {
-    textDecoration: "none",
-    color: "black",
-  },
 }));
 
 export default useStyles;

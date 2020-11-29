@@ -1,4 +1,4 @@
-const getParent = `query($id:ID!) {
+const getParent = `query($id:String!) {
     getParent(id:$id) {
         birthdate
         childsId
@@ -10,7 +10,7 @@ const getParent = `query($id:ID!) {
     }
 }`;
 
-const getChild =  `query($id:ID!) {
+const getChild =  `query($id:String!) {
     getChild(id:$id) {
         birthdate
         createdAt
@@ -35,10 +35,11 @@ const getChild =  `query($id:ID!) {
         }
         surname
         weight
+        asthmaClassification
     }
 }`;
 
-const listChilds =  `query($parentId:ID!) {
+const listChilds =  `query($parentId:String!) {
     listChilds(parentId:$parentId) {
         birthdate
         createdAt
@@ -63,6 +64,7 @@ const listChilds =  `query($parentId:ID!) {
         }
         surname
         weight
+        asthmaClassification
     }
 }`;
 

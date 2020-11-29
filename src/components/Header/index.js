@@ -6,7 +6,7 @@ import { withRouter } from "react-router";
 import MenuIcon from "@material-ui/icons/Menu";
 import useStyles from "./styles";
 
-import CustomDrawer from "./CustomDrawer";
+import CustomDrawer from "./customDrawer";
 
 const Header = (props) => {
   const classes = useStyles();

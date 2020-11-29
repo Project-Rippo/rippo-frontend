@@ -10,5 +10,6 @@ export default createGlobalStyle`
   body{
     font-family: "Roboto", sans-serif;
     font-size: 1em;
+    background-color: "#fffff";
   }
 `;

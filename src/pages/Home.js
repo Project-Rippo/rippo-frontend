@@ -5,35 +5,72 @@ import {
   CardIcon,
   CardHeader,
   CardText,
-  CardNavigation,
 } from "../components/NavigationCard";
-
-import ArrowForwardIosOutlinedIcon from "@material-ui/icons/ArrowForwardIosOutlined";
 
 import Header from "../components/Header";
 
 import { Box } from "@material-ui/core";
 import barGraph from "../assets/barGraph.svg";
+import hearth from "../assets/hearth.svg";
+
+// function to show child status
+// Tosse Leve, Fluxo de Ar leve = 1
+// Tosse Moderada, Fluxo de Ar Moderada = 2
+// Tosse Intesa, Fluxo de Ar Inteso, Sibilo = 3
+// else: 0
+const getStatus = (status) => {
+  return;
+};
+
+const getStatusText = (status) => {
+  switch (status) {
+    case 0:
+      break;
+    case 1:
+      break;
+    case 2:
+      break;
+    case 3:
+      break;
+    default:
+      break;
+  }
+};
+
+const getStatusColor = (status) => {
+  switch (status) {
+    case 0:
+      break;
+    case 1:
+      break;
+    case 2:
+      break;
+    case 3:
+      break;
+    default:
+      break;
+  }
+};
 
 const Home = () => {
   return (
     <>
       <Header />
       <Box m={2}>
-        <Card to="/dashboard">
-          <CardHeader>
-            <div style={{ display: "flex", flexDirection: "row" }}>
-              <img src={barGraph} alt="Bar Graph"></img>
+        <Card>
+          <CardHeader icon={hearth} disableNavigation>
+            <CardTitle color="#323232" center size="24px">
+              Status atual da criança
+            </CardTitle>
+          </CardHeader>
+          <CardText>
+            Foram detectados leves sinais de tosse ao longo do dia.
+          </CardText>
+        </Card>
 
-              <CardTitle color="#A3C744">Estatísticas</CardTitle>
-            </div>
-            <CardNavigation>
-              <ArrowForwardIosOutlinedIcon
-                style={{
-                  color: "#fff",
-                }}
-              />
-            </CardNavigation>
+        <Card to="/dashboard">
+          <CardHeader icon={barGraph}>
+            <CardTitle color="#A3C744">Estatísticas</CardTitle>
           </CardHeader>
           <CardText>
             <p>

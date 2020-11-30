@@ -59,10 +59,10 @@ const Dashboard = (props) => {
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
       <div style={{ padding: "21px" }}>
-        <SecondaryHeader />
         {/* TODO: create calendar component */}
+        <SecondaryHeader />
 
-        <h1>Calendario...</h1>
+        {/* <h1>Calendario...</h1> */}
       </div>
       <Container>
         <SectionBody>

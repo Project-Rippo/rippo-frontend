@@ -4,9 +4,10 @@ const Body = styled.div`
   background: #ffffff;
   border-radius: 11px;
   padding: 16px;
+  margin: 16px 0;
 `;
 
-const CardHeader = styled.div`
+const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,14 +15,17 @@ const CardHeader = styled.div`
 `;
 
 const Title = styled.h1`
-  margin-left: 16px;
+  margin: 0 16px;
+  width: 100%;
+
   font-weight: 600;
-  font-size: 20px;
-  line-height: 27px;
+  font-size: ${(props) => props.size || "20px"};
+  color: ${(props) => props.color || "#000"};
+  text-align: center;
+
   display: flex;
   align-items: center;
-
-  color: ${(props) => props.color || "#000"};
+  justify-content: ${(props) => props.center || "flex-start"};
 `;
 
 const Icon = styled.img`
@@ -37,8 +41,8 @@ const Navigation = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
 `;
 
 const Text = styled.div`
@@ -50,4 +54,4 @@ const Text = styled.div`
   color: #8c8c8c;
 `;
 
-export { Body, CardHeader, Title, Icon, Navigation, Text };
+export { Body, Header, Title, Icon, Navigation, Text };

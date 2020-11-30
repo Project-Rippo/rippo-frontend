@@ -1,5 +1,7 @@
 import React from "react";
-import { Body, CardHeader, Title, Icon, Navigation, Text } from "./styles";
+import { Body, Header, Title, Icon, Navigation, Text } from "./styles";
+import ArrowForwardIosOutlinedIcon from "@material-ui/icons/ArrowForwardIosOutlined";
+
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
@@ -16,11 +18,34 @@ const Card = (props) => {
 };
 
 const CardTitle = (props) => {
-  return <Title color={props.color}>{props.children}</Title>;
+  return (
+    <Title color={props.color} center={props.center} size={props.size}>
+      {props.children}
+    </Title>
+  );
 };
 
 const CardIcon = (props) => {
-  return <Icon color={props.color} src={props.src}></Icon>;
+  return <Icon src={props.icon}></Icon>;
+};
+
+const CardHeader = (props) => {
+  return (
+    <Header>
+      <CardIcon icon={props.icon} />
+      {props.children}
+      {!props.disableNavigation ? (
+        <CardNavigation>
+          <ArrowForwardIosOutlinedIcon
+            style={{
+              color: "#fff",
+            }}
+            fontSize="small"
+          />
+        </CardNavigation>
+      ) : null}
+    </Header>
+  );
 };
 
 const CardNavigation = (props) => {

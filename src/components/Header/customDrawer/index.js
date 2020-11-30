@@ -28,7 +28,7 @@ const CustomDrawer = ({ open, toggleDrawer }) => {
             alt="Child"
           ></img>
 
-          <h3>
+          <h3 mt={2}>
             {childInformation.name} {childInformation.surname}
           </h3>
         </Box>
@@ -40,7 +40,7 @@ const CustomDrawer = ({ open, toggleDrawer }) => {
           </Link>
           <Link to="/dashboard" className={classes.link} onClick={toggleDrawer}>
             <ListItem button>
-              <ListItemText>Dashoboard</ListItemText>
+              <ListItemText>Dashboard</ListItemText>
             </ListItem>
           </Link>
         </List>

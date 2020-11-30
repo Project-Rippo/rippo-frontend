@@ -8,7 +8,6 @@ import { Backdrop } from "@material-ui/core";
 
 import GlobalStyle from "./styles/Global";
 import Routes from "./routes";
-import Header from "./components/Header";
 
 import { Box } from "@material-ui/core";
 import animatedLogo from "./assets/ripple-animated.gif";
@@ -50,10 +49,10 @@ const App = () => {
     try {
       const request = await API.graphql({
         query: queries.getChild,
-        variables: { id: "ee0260e0-d65d-43d1-9c79-b65b9f862487" },
+        variables: { id: "0b3f25f8-964e-4557-8985-3b4d7626d6a6" },
       });
       const childRequest = await request.data.getChild;
-
+      console.log("childRequest: ", childRequest);
       localStorage.setItem("childInformation", JSON.stringify(childRequest));
     } catch (error) {
       console.log("Error fetching child Information: ", error);
@@ -84,10 +83,9 @@ const App = () => {
       {basicInformation ? (
         <Router>
           <GlobalStyle />
-          <Header />
-          <Box m={2}>
-            <Routes />
-          </Box>
+          {/* <Box m={2}> */}
+          <Routes />
+          {/* </Box> */}
         </Router>
       ) : null}
     </>

@@ -8,8 +8,8 @@ export default createGlobalStyle`
   }
 
   body{
-    font-family: "Roboto", sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 1em;
-    background-color: "#fffff";
+    background: #f8f8f8;
   }
 `;

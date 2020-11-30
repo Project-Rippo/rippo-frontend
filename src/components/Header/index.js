@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import { Toolbar, Typography, IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import { withRouter } from "react-router";
 
 import MenuIcon from "@material-ui/icons/Menu";
@@ -10,7 +9,6 @@ import CustomDrawer from "./customDrawer";
 
 const Header = (props) => {
   const classes = useStyles();
-  const { location } = props;
 
   const [drawer, setdrawer] = useState(false);
 
@@ -18,33 +16,25 @@ const Header = (props) => {
     setdrawer(!drawer);
   };
 
-  const pathName = (name) => {
-    switch (name) {
-      case "/dashboard":
-        return "Dashbord";
-
-      default:
-        return "Home";
-    }
-  };
-
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h5" className={classes.title}>
-            {pathName(location.pathname)}
-          </Typography>
-          <IconButton
-            onClick={toggleDrawer}
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+      <div className={classes.appBar}>
+        <div className={classes.column}>
+          <p className={classes.title}>Olá,</p>
+          <p className={classes.subtitle}>acompanhe a criança</p>
+        </div>
+        <IconButton
+          onClick={toggleDrawer}
+          aria-label="menu"
+          style={{
+            padding: "0",
+          }}
+          className={classes.iconMenu}
+        >
+          <MenuIcon className={classes.iconMenu} />
+        </IconButton>
+      </div>
+
       <CustomDrawer open={drawer} toggleDrawer={toggleDrawer} />
     </div>
   );

@@ -9,7 +9,6 @@ import {
 } from "../components/NavigationCard";
 
 import ArrowForwardIosOutlinedIcon from "@material-ui/icons/ArrowForwardIosOutlined";
-import TrendingUpRoundedIcon from "@material-ui/icons/TrendingUpRounded";
 
 import Header from "../components/Header";
 

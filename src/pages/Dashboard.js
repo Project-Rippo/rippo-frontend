@@ -10,9 +10,15 @@ import {
   Row,
 } from "../components/BodyComponents";
 
+import SympthonsCard from "../components/sympthonsCard";
+
 import weightIcon from "../assets/Weight.svg";
 import heightIcon from "../assets/height.svg";
 import childIcon from "../assets/childIcon.svg";
+import ar from "../assets/ar.svg";
+import bombinha from "../assets/bombinha.svg";
+import pulmao from "../assets/pulmao.svg";
+import tosse from "../assets/tosse.svg";
 
 const Dashboard = (props) => {
   const [childInformation, setChildInformation] = useState({});
@@ -91,6 +97,11 @@ const Dashboard = (props) => {
             </ChildInformation>
           </Row>
         </SectionBody>
+
+        <SympthonsCard icon={ar}>Crises</SympthonsCard>
+        <SympthonsCard icon={bombinha}>Tosse</SympthonsCard>
+        <SympthonsCard icon={pulmao}>Sibilo</SympthonsCard>
+        <SympthonsCard icon={tosse}>Fluxo de Ar</SympthonsCard>
       </Container>
     </div>
   );

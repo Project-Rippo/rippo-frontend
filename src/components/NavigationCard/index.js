@@ -5,16 +5,20 @@ import ArrowForwardIosOutlinedIcon from "@material-ui/icons/ArrowForwardIosOutli
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
-  return (
-    <Link
-      to={props.to}
-      style={{
-        textDecoration: "none",
-      }}
-    >
-      <Body>{props.children}</Body>
-    </Link>
-  );
+  if (!props.disableNavigation) {
+    return (
+      <Link
+        to={props.to}
+        style={{
+          textDecoration: "none",
+        }}
+      >
+        <Body>{props.children}</Body>
+      </Link>
+    );
+  } else {
+    return <Body>{props.children}</Body>;
+  }
 };
 
 const CardTitle = (props) => {

@@ -46,6 +46,7 @@ const Navigation = styled.div`
 `;
 
 const Text = styled.div`
+  margin-top: 10px;
   font-weight: 300;
 
   display: flex;

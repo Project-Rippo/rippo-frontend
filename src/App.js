@@ -9,7 +9,6 @@ import { Backdrop } from "@material-ui/core";
 import GlobalStyle from "./styles/Global";
 import Routes from "./routes";
 
-import { Box } from "@material-ui/core";
 import animatedLogo from "./assets/ripple-animated.gif";
 
 import { makeStyles } from "@material-ui/core/styles";

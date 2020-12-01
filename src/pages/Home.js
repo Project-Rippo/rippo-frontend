@@ -14,13 +14,29 @@ import { Box } from "@material-ui/core";
 import barGraph from "../assets/barGraph.svg";
 import hearth from "../assets/hearth.svg";
 
+import { API } from "aws-amplify";
+import * as queries from "../graphql/queries";
+
 // function to show child status
 // Tosse Leve, Fluxo de Ar leve = 1
 // Tosse Moderada, Fluxo de Ar Moderada = 2
 // Tosse Intesa, Fluxo de Ar Inteso, Sibilo = 3
 // else: 0
 const getStatus = (status) => {
-  return;
+  if (
+    status.asthmaAttack ||
+    status.chiado ||
+    status.fluxoAr == 0 ||
+    status.tosse == 4
+  ) {
+    return 3;
+  } else if (status.fluxoAr == 1 || status.tosse >= 2) {
+    return 2;
+  } else if (status.tosse < 2) {
+    return 1;
+  }
+
+  return 0;
 };
 
 const getStatusText = (status) => {
@@ -32,7 +48,7 @@ const getStatusText = (status) => {
     case 3:
       return "A criança apresentou sintomas graves e de alta intensidade, com registro de sibilo";
     default:
-      return "A criança não presentou sintomas";
+      return "A criança não apresentou sintomas";
   }
 };
 
@@ -49,11 +65,33 @@ const getStatusColor = (status) => {
   }
 };
 
+const fetchChildInformation = async () => {
+  try {
+    const request = await API.graphql({
+      query: queries.getChild,
+      variables: { id: "0b3f25f8-964e-4557-8985-3b4d7626d6a6" },
+    });
+    const childRequest = await request.data.getChild;
+    localStorage.setItem("childInformation", JSON.stringify(childRequest));
+
+    return childRequest;
+  } catch (error) {
+    console.log("Error fetching child Information: ", error);
+  }
+};
+
 const Home = () => {
-  const [childInformation, setChildInformation] = useState({});
+  const [childInformation, setChildInformation] = useState(
+    JSON.parse(localStorage.getItem("childInformation"))
+  );
 
   useEffect(() => {
-    setChildInformation(JSON.parse(localStorage.getItem("childInformation")));
+    const interval = setInterval(async () => {
+      console.log("polling");
+      const request = await fetchChildInformation();
+      setChildInformation(request);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -67,7 +105,7 @@ const Home = () => {
             </CardTitle>
           </CardHeader>
           <CardText>
-            Foram detectados leves sinais de tosse ao longo do dia.
+            {getStatusText(getStatus(childInformation.status))}
           </CardText>
 
           <div
@@ -78,7 +116,9 @@ const Home = () => {
               justifyContent: "center",
             }}
           >
-            <ChildStatus color={"#A3C744"} />
+            <ChildStatus
+              color={getStatusColor(getStatus(childInformation.status))}
+            />
           </div>
         </Card>
 

@@ -87,7 +87,6 @@ const Home = () => {
 
   useEffect(() => {
     const interval = setInterval(async () => {
-      console.log("polling");
       const request = await fetchChildInformation();
       setChildInformation(request);
     }, 3000);

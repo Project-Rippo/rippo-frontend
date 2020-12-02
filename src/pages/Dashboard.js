@@ -115,11 +115,14 @@ const Dashboard = (props) => {
           </SympthonsCard>
         </Container>
       )}
-      {expandCard === "crises" && <CrisesWrapper />}
-      {/* Change for your component and remove this comment */}
-      {expandCard === "tosse" && <TosseWrapper />}
-      {expandCard === "sibilo" && <CrisesWrapper />}
-      {expandCard === "fluxoAr" && <CrisesWrapper />}
+      
+      <Container>
+        {expandCard === "crises" && <CrisesWrapper />}
+        {/* Change for your component and remove this comment */}
+        {expandCard === "tosse" && <TosseWrapper />}
+        {expandCard === "sibilo" && <CrisesWrapper />}
+        {expandCard === "fluxoAr" && <CrisesWrapper />}
+      </Container>
     </div>
   );
 };

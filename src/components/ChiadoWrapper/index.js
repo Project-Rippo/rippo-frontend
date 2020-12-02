@@ -11,10 +11,10 @@ const occurrencesOf = (number, numbers) =>
     0
   );
 
-const TosseWrapper = (props) => {
+const ChiadoWrapper = (props) => {
   return (
     <Container direction="column">
-      <Title>Intensidade da tosse</Title>
+      <Title>Incidência sibilo</Title>
       <Text>Atualização em tempo real</Text>
       <div
         style={{
@@ -25,17 +25,17 @@ const TosseWrapper = (props) => {
         }}
       >
         <IntensityChart
-          title="Intensidade da tosse"
+          title="Intensidade do Sibilo"
           labels={props.label}
           data={props.data}
-          ytitle={"Nível da Tosse"}
+          ytitle={"Nível do Sibilo"}
           xtitle={"Horários do dia"}
-          max={3}
+          max={1}
           min={0}
         />
       </div>
 
-      <Title style={{ marginTop: "25px" }}>Incidência de Tosse</Title>
+      <Title style={{ marginTop: "25px" }}>Quantidade de ocorrência</Title>
       <Text>Atualização em tempo real</Text>
       <div
         style={{
@@ -45,20 +45,13 @@ const TosseWrapper = (props) => {
         }}
       >
         <IncidenceChart
-          title="Intensidade da tosse"
-          labels={[
-            "Sem Tosse",
-            "Tosse Leve",
-            "Tosse Moderada",
-            "Tosse Intensa",
-          ]}
+          title="Ocorrência de Sibilo"
+          labels={["Sem Sibilo", "Com Sibilo"]}
           data={[
             (occurrencesOf(0, props.data) / props.data.length) * 100,
             (occurrencesOf(1, props.data) / props.data.length) * 100,
-            (occurrencesOf(2, props.data) / props.data.length) * 100,
-            (occurrencesOf(3, props.data) / props.data.length) * 100,
           ]}
-          ytitle={"Nível da Tosse"}
+          ytitle={"Nível do Sibilo"}
           xtitle={"Horários do dia"}
         />
       </div>
@@ -66,4 +59,4 @@ const TosseWrapper = (props) => {
   );
 };
 
-export default TosseWrapper;
+export default ChiadoWrapper;

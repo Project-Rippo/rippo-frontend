@@ -26,17 +26,17 @@ const getStatus = (status) => {
   if (
     status.asthmaAttack ||
     status.chiado ||
-    status.fluxoAr == 0 ||
+    status.fluxoAr > 2 ||
     status.tosse == 4
   ) {
     return 3;
   } else if (status.fluxoAr == 1 || status.tosse >= 2) {
     return 2;
-  } else if (status.tosse < 2) {
+  } else if (status.tosse < 2 && status.tosse > 0) {
     return 1;
+  } else {
+    return 0;
   }
-
-  return 0;
 };
 
 const getStatusText = (status) => {
@@ -95,6 +95,7 @@ const Home = () => {
 
   return (
     <>
+      {console.log(getStatus(childInformation.status))}
       <Header />
       <Box m={2}>
         <Card disableNavigation>

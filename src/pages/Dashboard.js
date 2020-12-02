@@ -13,6 +13,8 @@ import {
 import SympthonsCard from "../components/sympthonsCard";
 import CrisesWrapper from "../components/CrisesWrapper";
 import TosseWrapper from "../components/TosseWrapper";
+import ChiadoWrapper from "../components/ChiadoWrapper";
+import FluxoWrapper from "../components/FluxoWrapper";
 
 import weightIcon from "../assets/Weight.svg";
 import heightIcon from "../assets/height.svg";
@@ -32,6 +34,9 @@ const Dashboard = (props) => {
   const [expandCard, setExpandCard] = useState();
   const startOfMonth = moment().startOf("month").format("x");
   const endOfMonth = moment().endOf("month").format("x");
+
+  const startOfDay = moment().startOf("Day").format("x");
+  const endOfDay = moment().endOf("Day").format("x");
 
   const totalCrisesInMonth = () => {
     const history = childInformation.history ? childInformation.history : [];
@@ -86,9 +91,33 @@ const Dashboard = (props) => {
     .filter((historyItem) => historyItem.asthmaAttack > 0)
     .reverse();
 
+  const tosseArr = childInformation.history
+    .filter((item) => item.createdAt > startOfDay && item.createdAt < endOfDay)
+    .map((item) => (item.tosse ? item.tosse : 0));
+
+  const tosseTime = childInformation.history
+    .filter((item) => item.createdAt > startOfDay && item.createdAt < endOfDay)
+    .map((item) => moment(item.createdAt, "x").format("HH"));
+
+  const chiadoArr = childInformation.history
+    .filter((item) => item.createdAt > startOfDay && item.createdAt < endOfDay)
+    .map((item) => (item.chiado ? item.chiado : 0));
+
+  const chiadoTime = childInformation.history
+    .filter((item) => item.createdAt > startOfDay && item.createdAt < endOfDay)
+    .map((item) => moment(item.createdAt, "x").format("HH"));
+
+  const fluxoArArr = childInformation.history
+    .filter((item) => item.createdAt > startOfDay && item.createdAt < endOfDay)
+    .map((item) => (item.fluxoAr ? item.fluxoAr : 0));
+
+  const fluxoArTime = childInformation.history
+    .filter((item) => item.createdAt > startOfDay && item.createdAt < endOfDay)
+    .map((item) => moment(item.createdAt, "x").format("HH"));
+
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-      {console.log(crises)}
+      {console.log("tosse: ", fluxoArArr)}
       <div style={{ padding: "21px" }}>
         {/* TODO: create calendar component */}
         <SecondaryHeader />
@@ -148,9 +177,15 @@ const Dashboard = (props) => {
       <Container>
         {expandCard === "crises" && <CrisesWrapper crises={crises} />}
         {/* Change for your component and remove this comment */}
-        {expandCard === "tosse" && <TosseWrapper />}
-        {expandCard === "sibilo" && <CrisesWrapper />}
-        {expandCard === "fluxoAr" && <CrisesWrapper />}
+        {expandCard === "tosse" && (
+          <TosseWrapper data={tosseArr} label={tosseTime} />
+        )}
+        {expandCard === "sibilo" && (
+          <ChiadoWrapper data={chiadoArr} label={chiadoTime} />
+        )}
+        {expandCard === "fluxoAr" && (
+          <FluxoWrapper data={fluxoArArr} label={fluxoArTime} />
+        )}
       </Container>
     </div>
   );

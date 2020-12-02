@@ -11,10 +11,10 @@ const occurrencesOf = (number, numbers) =>
     0
   );
 
-const TosseWrapper = (props) => {
+const FluxoWrapper = (props) => {
   return (
     <Container direction="column">
-      <Title>Intensidade da tosse</Title>
+      <Title>Intensidade fluxo do ar</Title>
       <Text>Atualização em tempo real</Text>
       <div
         style={{
@@ -25,17 +25,17 @@ const TosseWrapper = (props) => {
         }}
       >
         <IntensityChart
-          title="Intensidade da tosse"
+          title="Intensidade do Fluxo de Ar"
           labels={props.label}
           data={props.data}
-          ytitle={"Nível da Tosse"}
+          ytitle={"Nível da Fluxo de Ar"}
           xtitle={"Horários do dia"}
           max={3}
           min={0}
         />
       </div>
 
-      <Title style={{ marginTop: "25px" }}>Incidência de Tosse</Title>
+      <Title style={{ marginTop: "25px" }}>Incidência fluxo do ar</Title>
       <Text>Atualização em tempo real</Text>
       <div
         style={{
@@ -45,12 +45,12 @@ const TosseWrapper = (props) => {
         }}
       >
         <IncidenceChart
-          title="Intensidade da tosse"
+          title="Incidência de Fluxo de Ar"
           labels={[
-            "Sem Tosse",
-            "Tosse Leve",
-            "Tosse Moderada",
-            "Tosse Intensa",
+            "Fluxo normal",
+            "Fluxo levemente prejudicado",
+            "Fluxo obstruido",
+            "Fluxo muito obstruido",
           ]}
           data={[
             (occurrencesOf(0, props.data) / props.data.length) * 100,
@@ -58,7 +58,7 @@ const TosseWrapper = (props) => {
             (occurrencesOf(2, props.data) / props.data.length) * 100,
             (occurrencesOf(3, props.data) / props.data.length) * 100,
           ]}
-          ytitle={"Nível da Tosse"}
+          ytitle={"Nível da Fluxo de Ar"}
           xtitle={"Horários do dia"}
         />
       </div>
@@ -66,4 +66,4 @@ const TosseWrapper = (props) => {
   );
 };
 
-export default TosseWrapper;
+export default FluxoWrapper;

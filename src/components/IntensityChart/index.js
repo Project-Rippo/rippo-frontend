@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import Chart from "chart.js";
 
-const chartConfig = (legend, labels, data, ytitle, xtitle) => {
+const chartConfig = (legend, labels, data, ytitle, xtitle, min, max) => {
   const ctx = document.getElementById("myChart").getContext("2d");
   const gradientStroke = ctx.createLinearGradient(0, 0, 0, 170);
   gradientStroke.addColorStop(0, "#f7f7f7");
@@ -33,8 +33,8 @@ const chartConfig = (legend, labels, data, ytitle, xtitle) => {
         yAxes: [
           {
             ticks: {
-              max: 3,
-              min: 0,
+              max: max,
+              min: min,
               stepSize: 1,
             },
             scaleLabel: {
@@ -45,6 +45,14 @@ const chartConfig = (legend, labels, data, ytitle, xtitle) => {
         ],
         xAxes: [
           {
+            offset: true,
+            // type: "time",
+            // time: {
+            //   unit: "hour",
+            // },
+            gridLines: {
+              display: true,
+            },
             scaleLabel: {
               display: true,
               labelString: xtitle,
@@ -72,7 +80,9 @@ const IntensityChart = (props) => {
         props.labels,
         props.data,
         props.ytitle,
-        props.xtitle
+        props.xtitle,
+        props.min,
+        props.max
       )
     );
   }, []);

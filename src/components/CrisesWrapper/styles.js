@@ -32,7 +32,7 @@ const SectionBody = styled.div`
   display: flex;
 
   flex-direction: column;
-  padding: 12px;
+  padding: 12px 12px 0px 12px;
 `;
 
 const SectionTitle = styled.h1`

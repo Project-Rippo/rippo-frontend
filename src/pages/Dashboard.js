@@ -22,8 +22,13 @@ import bombinha from "../assets/bombinha.svg";
 import pulmao from "../assets/pulmao.svg";
 import tosse from "../assets/tosse.svg";
 
+import { API } from "aws-amplify";
+import * as queries from "../graphql/queries";
+
 const Dashboard = (props) => {
-  const [childInformation, setChildInformation] = useState({});
+  const [childInformation, setChildInformation] = useState(
+    JSON.parse(localStorage.getItem("childInformation"))
+  );
   const [expandCard, setExpandCard] = useState();
   const startOfMonth = moment().startOf("month").format("x");
   const endOfMonth = moment().endOf("month").format("x");
@@ -54,12 +59,36 @@ const Dashboard = (props) => {
     return age;
   };
 
+  const fetchChildInformation = async () => {
+    try {
+      const request = await API.graphql({
+        query: queries.getChild,
+        variables: { id: "0b3f25f8-964e-4557-8985-3b4d7626d6a6" },
+      });
+      const childRequest = await request.data.getChild;
+      localStorage.setItem("childInformation", JSON.stringify(childRequest));
+
+      return childRequest;
+    } catch (error) {
+      console.log("Error fetching child Information: ", error);
+    }
+  };
+
   useEffect(() => {
-    setChildInformation(JSON.parse(localStorage.getItem("childInformation")));
+    const interval = setInterval(async () => {
+      const request = await fetchChildInformation();
+      setChildInformation(request);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
+
+  const crises = childInformation?.history
+    .filter((historyItem) => historyItem.asthmaAttack > 0)
+    .reverse();
 
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+      {console.log(crises)}
       <div style={{ padding: "21px" }}>
         {/* TODO: create calendar component */}
         <SecondaryHeader />
@@ -115,7 +144,7 @@ const Dashboard = (props) => {
           </SympthonsCard>
         </Container>
       )}
-      {expandCard === "crises" && <CrisesWrapper />}
+      {expandCard === "crises" && <CrisesWrapper crises={crises} />}
       {/* Change for your component and remove this comment */}
       {expandCard === "tosse" && <TosseWrapper />}
       {expandCard === "sibilo" && <CrisesWrapper />}

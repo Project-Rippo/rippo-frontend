@@ -11,6 +11,7 @@ import {
 } from "../components/BodyComponents";
 
 import SympthonsCard from "../components/sympthonsCard";
+import CrisesWrapper from "../components/CrisesWrapper";
 
 import weightIcon from "../assets/Weight.svg";
 import heightIcon from "../assets/height.svg";
@@ -22,7 +23,7 @@ import tosse from "../assets/tosse.svg";
 
 const Dashboard = (props) => {
   const [childInformation, setChildInformation] = useState({});
-
+  const [expandCard, setExpandCard] = useState();
   const startOfMonth = moment().startOf("month").format("x");
   const endOfMonth = moment().endOf("month").format("x");
 
@@ -64,45 +65,60 @@ const Dashboard = (props) => {
 
         {/* <h1>Calendario...</h1> */}
       </div>
-      <Container>
-        <SectionBody>
-          <SectionTitle>Registro diário</SectionTitle>
-        </SectionBody>
-        <SectionBody>
-          <p
-            style={{
-              fontSize: "13px",
-              color: "#323232",
-            }}
-          >
-            Total de crises
-          </p>
-          <p
-            style={{
-              color: "#4490C7",
-              fontSize: "18px",
-            }}
-          >
-            {totalCrisesInMonth()} crises no mês
-          </p>
-          <Row>
-            <ChildInformation image={weightIcon}>
-              {childInformation.weight} kg
-            </ChildInformation>
-            <ChildInformation image={heightIcon}>
-              {childInformation.height} cm
-            </ChildInformation>
-            <ChildInformation image={childIcon}>
-              {getChildAge()} anos
-            </ChildInformation>
-          </Row>
-        </SectionBody>
+      {!expandCard && (
+        <Container>
+          <SectionBody>
+            <SectionTitle>Registro diário</SectionTitle>
+          </SectionBody>
+          <SectionBody>
+            <p
+              style={{
+                fontSize: "13px",
+                color: "#323232",
+              }}
+            >
+              Total de crises
+            </p>
+            <p
+              style={{
+                color: "#4490C7",
+                fontSize: "18px",
+              }}
+            >
+              {totalCrisesInMonth()} crises no mês
+            </p>
+            <Row>
+              <ChildInformation image={weightIcon}>
+                {childInformation.weight} kg
+              </ChildInformation>
+              <ChildInformation image={heightIcon}>
+                {childInformation.height} cm
+              </ChildInformation>
+              <ChildInformation image={childIcon}>
+                {getChildAge()} anos
+              </ChildInformation>
+            </Row>
+          </SectionBody>
 
-        <SympthonsCard icon={ar}>Crises</SympthonsCard>
-        <SympthonsCard icon={bombinha}>Tosse</SympthonsCard>
-        <SympthonsCard icon={pulmao}>Sibilo</SympthonsCard>
-        <SympthonsCard icon={tosse}>Fluxo de Ar</SympthonsCard>
-      </Container>
+          <SympthonsCard onClick={() => setExpandCard("crises")} icon={ar}>
+            Crises
+          </SympthonsCard>
+          <SympthonsCard onClick={() => setExpandCard("tosse")} icon={bombinha}>
+            Tosse
+          </SympthonsCard>
+          <SympthonsCard onClick={() => setExpandCard("sibilo")} icon={pulmao}>
+            Sibilo
+          </SympthonsCard>
+          <SympthonsCard onClick={() => setExpandCard("fluxoAr")} icon={tosse}>
+            Fluxo de Ar
+          </SympthonsCard>
+        </Container>
+      )}
+      {expandCard === "crises" && <CrisesWrapper />}
+      {/* Change for your component and remove this comment */}
+      {expandCard === "tosse" && <CrisesWrapper />}
+      {expandCard === "sibilo" && <CrisesWrapper />}
+      {expandCard === "fluxoAr" && <CrisesWrapper />}
     </div>
   );
 };

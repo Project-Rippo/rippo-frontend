@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.js": "/Project-Rippo/rippo-frontend/static/js/main.3696fb25.chunk.js",
+    "main.js.map": "/Project-Rippo/rippo-frontend/static/js/main.3696fb25.chunk.js.map",
+    "runtime-main.js": "/Project-Rippo/rippo-frontend/static/js/runtime-main.69bec559.js",
+    "runtime-main.js.map": "/Project-Rippo/rippo-frontend/static/js/runtime-main.69bec559.js.map",
+    "static/css/2.6c0f60ba.chunk.css": "/Project-Rippo/rippo-frontend/static/css/2.6c0f60ba.chunk.css",
+    "static/js/2.4acd2169.chunk.js": "/Project-Rippo/rippo-frontend/static/js/2.4acd2169.chunk.js",
+    "static/js/2.4acd2169.chunk.js.map": "/Project-Rippo/rippo-frontend/static/js/2.4acd2169.chunk.js.map",
+    "static/js/3.a45b8331.chunk.js": "/Project-Rippo/rippo-frontend/static/js/3.a45b8331.chunk.js",
+    "static/js/3.a45b8331.chunk.js.map": "/Project-Rippo/rippo-frontend/static/js/3.a45b8331.chunk.js.map",
+    "index.html": "/Project-Rippo/rippo-frontend/index.html",
+    "service-worker.js": "/Project-Rippo/rippo-frontend/service-worker.js",
+    "service-worker.js.map": "/Project-Rippo/rippo-frontend/service-worker.js.map",
+    "static/css/2.6c0f60ba.chunk.css.map": "/Project-Rippo/rippo-frontend/static/css/2.6c0f60ba.chunk.css.map",
+    "static/js/2.4acd2169.chunk.js.LICENSE.txt": "/Project-Rippo/rippo-frontend/static/js/2.4acd2169.chunk.js.LICENSE.txt",
+    "static/media/Weight.1d36c689.svg": "/Project-Rippo/rippo-frontend/static/media/Weight.1d36c689.svg",
+    "static/media/ar.bd8ef2cd.svg": "/Project-Rippo/rippo-frontend/static/media/ar.bd8ef2cd.svg",
+    "static/media/barGraph.fc7766a0.svg": "/Project-Rippo/rippo-frontend/static/media/barGraph.fc7766a0.svg",
+    "static/media/bombinha.816edad3.svg": "/Project-Rippo/rippo-frontend/static/media/bombinha.816edad3.svg",
+    "static/media/child.5e05ab71.png": "/Project-Rippo/rippo-frontend/static/media/child.5e05ab71.png",
+    "static/media/childIcon.cc175dc2.svg": "/Project-Rippo/rippo-frontend/static/media/childIcon.cc175dc2.svg",
+    "static/media/heartIcon.2b3681e4.svg": "/Project-Rippo/rippo-frontend/static/media/heartIcon.2b3681e4.svg",
+    "static/media/hearth.2e64f35b.svg": "/Project-Rippo/rippo-frontend/static/media/hearth.2e64f35b.svg",
+    "static/media/height.5b725cb3.svg": "/Project-Rippo/rippo-frontend/static/media/height.5b725cb3.svg",
+    "static/media/mars-sidebar.71f93ade.svg": "/Project-Rippo/rippo-frontend/static/media/mars-sidebar.71f93ade.svg",
+    "static/media/pulmao.325d57bb.svg": "/Project-Rippo/rippo-frontend/static/media/pulmao.325d57bb.svg",
+    "static/media/ripple-animated.03e815ef.gif": "/Project-Rippo/rippo-frontend/static/media/ripple-animated.03e815ef.gif",
+    "static/media/tosse.5a196c28.svg": "/Project-Rippo/rippo-frontend/static/media/tosse.5a196c28.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.69bec559.js",
+    "static/css/2.6c0f60ba.chunk.css",
+    "static/js/2.4acd2169.chunk.js",
+    "static/js/main.3696fb25.chunk.js"
+  ]
+}

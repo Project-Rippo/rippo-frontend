@@ -12,6 +12,7 @@ import {
 
 import SympthonsCard from "../components/sympthonsCard";
 import CrisesWrapper from "../components/CrisesWrapper";
+import TosseWrapper from "../components/TosseWrapper";
 
 import weightIcon from "../assets/Weight.svg";
 import heightIcon from "../assets/height.svg";
@@ -116,7 +117,7 @@ const Dashboard = (props) => {
       )}
       {expandCard === "crises" && <CrisesWrapper />}
       {/* Change for your component and remove this comment */}
-      {expandCard === "tosse" && <CrisesWrapper />}
+      {expandCard === "tosse" && <TosseWrapper />}
       {expandCard === "sibilo" && <CrisesWrapper />}
       {expandCard === "fluxoAr" && <CrisesWrapper />}
     </div>

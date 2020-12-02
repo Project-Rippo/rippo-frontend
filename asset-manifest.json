@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/rippo-frontend/static/js/main.bb5db1d1.chunk.js",
-    "main.js.map": "/rippo-frontend/static/js/main.bb5db1d1.chunk.js.map",
+    "main.js": "/rippo-frontend/static/js/main.ac71338c.chunk.js",
+    "main.js.map": "/rippo-frontend/static/js/main.ac71338c.chunk.js.map",
     "runtime-main.js": "/rippo-frontend/static/js/runtime-main.0046f2f8.js",
     "runtime-main.js.map": "/rippo-frontend/static/js/runtime-main.0046f2f8.js.map",
     "static/css/2.6c0f60ba.chunk.css": "/rippo-frontend/static/css/2.6c0f60ba.chunk.css",
@@ -32,6 +32,6 @@
     "static/js/runtime-main.0046f2f8.js",
     "static/css/2.6c0f60ba.chunk.css",
     "static/js/2.dbe0b944.chunk.js",
-    "static/js/main.bb5db1d1.chunk.js"
+    "static/js/main.ac71338c.chunk.js"
   ]
 }
